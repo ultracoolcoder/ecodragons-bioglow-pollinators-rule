@@ -1,123 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BioGlow Garden: Why Pollinators Matter</title>
-<meta name="description" content="Meet the pollinators, learn what threatens them, take the quiz, and help keep the garden glowing. An FLL Innovation Project by kids, for everyone.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
-<style>
-:root{
-  --night:#0b1026;
-  --deep:#141a3a;
-  --panel:#1b2350;
-  --line:#2f3a7a;
-  --text:#eaf0ff;
-  --muted:#aab4e0;
-  --pollen:#ffd54a;
-  --cyan:#4df0d0;
-  --pink:#ff7ad9;
-  --lime:#b6ff5c;
-  --bad:#ff8a8a;
-  --radius:18px;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;color-scheme:dark}
-body{margin:0;background:var(--night);color:var(--text);font-family:'Nunito',system-ui,sans-serif;font-size:18px;line-height:1.6}
-h1,h2,h3{font-family:'Fredoka','Nunito',sans-serif;line-height:1.15;margin:0 0 .5em}
-h1{font-size:clamp(2.4rem,8vw,4.6rem);font-weight:700}
-h2{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:700}
-h3{font-size:1.3rem;font-weight:500}
-p{margin:0 0 1em;max-width:62ch}
-a{color:var(--cyan)}
-:focus-visible{outline:3px solid var(--pollen);outline-offset:3px;border-radius:6px}
-.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
-section{padding:72px 0}
-.glow-text{color:var(--pollen);text-shadow:0 0 18px rgba(255,213,74,.55)}
-button{font:inherit;cursor:pointer}
-.btn{background:var(--pollen);color:#1a1500;border:0;border-radius:999px;padding:12px 24px;font-weight:800;box-shadow:0 0 22px rgba(255,213,74,.4);min-height:48px}
-.btn:hover{filter:brightness(1.08)}
-.btn.alt{background:transparent;color:var(--text);border:2px solid var(--line);box-shadow:none}
-.btn.alt:hover{border-color:var(--cyan)}
-.btn[disabled]{opacity:.4;cursor:not-allowed}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BioGlow Garden: Why Pollinators Matter</title>
+  <meta name="description" content="Meet the pollinators, learn what threatens them, take the quiz, and help keep the garden glowing. An FLL Innovation Project by kids, for everyone.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --night:#0b1026;
+      --deep:#141a3a;
+      --panel:#1b2350;
+      --line:#2f3a7a;
+      --text:#eaf0ff;
+      --muted:#aab4e0;
+      --pollen:#ffd54a;
+      --cyan:#4df0d0;
+      --pink:#ff7ad9;
+      --lime:#b6ff5c;
+      --bad:#ff8a8a;
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;color-scheme:dark}
+    body{margin:0;background:var(--night);color:var(--text);font-family:'Nunito',system-ui,sans-serif;font-size:18px;line-height:1.6}
+    h1,h2,h3{font-family:'Fredoka','Nunito',sans-serif;line-height:1.15;margin:0 0 .5em}
+    h1{font-size:clamp(2.4rem,8vw,4.6rem);font-weight:700}
+    h2{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:700}
+    h3{font-size:1.3rem;font-weight:500}
+    p{margin:0 0 1em;max-width:62ch}
+    a{color:var(--cyan)}
+    :focus-visible{outline:3px solid var(--pollen);outline-offset:3px;border-radius:6px}
+    .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+    section{padding:72px 0}
+    .glow-text{color:var(--pollen);text-shadow:0 0 18px rgba(255,213,74,.55)}
+    button{font:inherit;cursor:pointer}
+    .btn{background:var(--pollen);color:#1a1500;border:0;border-radius:999px;padding:12px 24px;font-weight:800;box-shadow:0 0 22px rgba(255,213,74,.4);min-height:48px}
+    .btn:hover{filter:brightness(1.08)}
+    .btn.alt{background:transparent;color:var(--text);border:2px solid var(--line);box-shadow:none}
+    .btn.alt:hover{border-color:var(--cyan)}
+    .btn[disabled]{opacity:.4;cursor:not-allowed}
 
-/* nav */
-nav{position:sticky;top:0;z-index:10;background:rgba(11,16,38,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;gap:6px;align-items:center;overflow-x:auto;padding-top:8px;padding-bottom:8px;white-space:nowrap}
-nav strong{font-family:'Fredoka',sans-serif;color:var(--pollen);margin-right:10px;font-size:1.1rem}
-nav a{color:var(--text);text-decoration:none;padding:8px 12px;border-radius:999px;font-weight:700;font-size:.95rem}
-nav a:hover{background:var(--panel)}
+    /* nav */
+    nav{position:sticky;top:0;z-index:10;background:rgba(11,16,38,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+    nav .wrap{display:flex;gap:6px;align-items:center;overflow-x:auto;padding-top:8px;padding-bottom:8px;white-space:nowrap}
+    nav strong{font-family:'Fredoka',sans-serif;color:var(--pollen);margin-right:10px;font-size:1.1rem}
+    nav a{color:var(--text);text-decoration:none;padding:8px 12px;border-radius:999px;font-weight:700;font-size:.95rem}
+    nav a:hover{background:var(--panel)}
 
-/* hero */
-#hero{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden;padding:60px 0}
-#pollen{position:absolute;inset:0;width:100%;height:100%;display:block}
-#hero .wrap{position:relative;z-index:2;pointer-events:none}
-#hero .wrap *{pointer-events:auto}
-.tag{display:inline-block;border:2px solid var(--cyan);color:var(--cyan);border-radius:999px;padding:4px 14px;font-weight:800;font-size:.9rem;margin-bottom:18px}
-.tag .eco{color:var(--lime);text-shadow:0 0 10px rgba(182,255,92,.6)}
-.hint{color:var(--muted);font-size:.95rem;margin-top:14px}
+    /* hero */
+    #hero{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden;padding:60px 0}
+    #pollen{position:absolute;inset:0;width:100%;height:100%;display:block}
+    #hero .wrap{position:relative;z-index:2;pointer-events:none}
+    #hero .wrap *{pointer-events:auto}
+    .tag{display:inline-block;border:2px solid var(--cyan);color:var(--cyan);border-radius:999px;padding:4px 14px;font-weight:800;font-size:.9rem;margin-bottom:18px}
+    .tag .eco{color:var(--lime);text-shadow:0 0 10px rgba(182,255,92,.6)}
+    .hint{color:var(--muted);font-size:.95rem;margin-top:14px}
 
-/* pollinator cards */
-.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
-.tabs button{background:var(--deep);color:var(--text);border:2px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:700;min-height:44px}
-.tabs button[aria-selected="true"]{background:var(--panel);border-color:var(--c,var(--pollen));box-shadow:0 0 16px var(--c,var(--pollen))}
-.card{background:var(--deep);border:2px solid var(--line);border-radius:var(--radius);padding:24px}
-#pcard{border-color:var(--c,var(--pollen));box-shadow:0 0 28px -8px var(--c,var(--pollen))}
-#pcard .big{font-size:3.4rem;line-height:1}
-.facts{padding-left:20px;margin:0}
-.facts li{margin-bottom:.4em}
+    /* pollinator cards */
+    .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+    .tabs button{background:var(--deep);color:var(--text);border:2px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:700;min-height:44px}
+    .tabs button[aria-selected="true"]{background:var(--panel);border-color:var(--c,var(--pollen));box-shadow:0 0 16px var(--c,var(--pollen))}
+    .card{background:var(--deep);border:2px solid var(--line);border-radius:var(--radius);padding:24px}
+    #pcard{border-color:var(--c,var(--pollen));box-shadow:0 0 28px -8px var(--c,var(--pollen))}
+    #pcard .big{font-size:3.4rem;line-height:1}
+    .facts{padding-left:20px;margin:0}
+    .facts li{margin-bottom:.4em}
 
-/* story */
-#story{background:var(--deep);border-block:1px solid var(--line)}
-.stage{min-height:200px;display:flex;flex-direction:column;justify-content:center}
-.stage .emoji{font-size:3.4rem}
-.dots{display:flex;gap:8px;margin-bottom:16px}
-.dots span{width:12px;height:12px;border-radius:50%;background:var(--line)}
-.dots span.on{background:var(--pollen);box-shadow:0 0 10px var(--pollen)}
-.row{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+    /* story */
+    #story{background:var(--deep);border-block:1px solid var(--line)}
+    .stage{min-height:200px;display:flex;flex-direction:column;justify-content:center}
+    .stage .emoji{font-size:3.4rem}
+    .dots{display:flex;gap:8px;margin-bottom:16px}
+    .dots span{width:12px;height:12px;border-radius:50%;background:var(--line)}
+    .dots span.on{background:var(--pollen);box-shadow:0 0 10px var(--pollen)}
+    .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
 
-/* threat meter */
-.garden{position:relative;height:240px;border-radius:var(--radius);background:radial-gradient(circle at 50% 100%,#1f2f6a,#0e1330 70%);border:2px solid var(--line);overflow:hidden;margin-bottom:16px}
-.fly{position:absolute;font-size:1.5rem;transition:opacity .6s,filter .6s,transform .6s;filter:drop-shadow(0 0 8px var(--pollen))}
-.fly.gone{opacity:.07;filter:grayscale(1);transform:scale(.6)}
-.meter{height:16px;background:var(--panel);border-radius:999px;overflow:hidden;margin:8px 0 4px}
-.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--pollen),var(--lime));transition:width .5s}
-.threats{display:grid;gap:12px;margin-top:20px}
-.threat{background:var(--deep);border:2px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;align-items:start}
-.threat input{width:26px;height:26px;margin-top:4px;accent-color:var(--pink)}
-.threat label{font-family:'Fredoka',sans-serif;font-size:1.2rem;cursor:pointer}
-.threat p{grid-column:2;margin:0;color:var(--muted);font-size:1rem}
-.threat.on{border-color:var(--pink)}
-.small{font-size:.9rem;color:var(--muted)}
+    /* threat meter */
+    .garden{position:relative;height:240px;border-radius:var(--radius);background:radial-gradient(circle at 50% 100%,#1f2f6a,#0e1330 70%);border:2px solid var(--line);overflow:hidden;margin-bottom:16px}
+    .fly{position:absolute;font-size:1.5rem;transition:opacity .6s,filter .6s,transform .6s;filter:drop-shadow(0 0 8px var(--pollen))}
+    .fly.gone{opacity:.07;filter:grayscale(1);transform:scale(.6)}
+    .meter{height:16px;background:var(--panel);border-radius:999px;overflow:hidden;margin:8px 0 4px}
+    .meter i{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--pollen),var(--lime));transition:width .5s}
+    .threats{display:grid;gap:12px;margin-top:20px}
+    .threat{background:var(--deep);border:2px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;align-items:start}
+    .threat input{width:26px;height:26px;margin-top:4px;accent-color:var(--pink)}
+    .threat label{font-family:'Fredoka',sans-serif;font-size:1.2rem;cursor:pointer}
+    .threat p{grid-column:2;margin:0;color:var(--muted);font-size:1rem}
+    .threat.on{border-color:var(--pink)}
+    .small{font-size:.9rem;color:var(--muted)}
 
-/* actions */
-.blooms{display:flex;gap:10px;font-size:2rem;margin:12px 0 20px}
-.blooms span{filter:grayscale(1) brightness(.5);transition:.4s}
-.blooms span.on{filter:drop-shadow(0 0 10px var(--pink))}
-.act{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}
-.act input{width:26px;height:26px;margin-top:3px;accent-color:var(--lime)}
-.act label{cursor:pointer}
+    /* actions */
+    .blooms{display:flex;gap:10px;font-size:2rem;margin:12px 0 20px}
+    .blooms span{filter:grayscale(1) brightness(.5);transition:.4s}
+    .blooms span.on{filter:drop-shadow(0 0 10px var(--pink))}
+    .act{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}
+    .act input{width:26px;height:26px;margin-top:3px;accent-color:var(--lime)}
+    .act label{cursor:pointer}
 
-/* quiz */
-#quiz{background:var(--deep);border-block:1px solid var(--line)}
-.opts{display:grid;gap:10px;margin:16px 0}
-.opt{text-align:left;background:var(--night);color:var(--text);border:2px solid var(--line);border-radius:14px;padding:14px 16px;font-weight:700;min-height:52px}
-.opt:hover:not([disabled]){border-color:var(--cyan)}
-.opt.right{border-color:var(--lime);background:rgba(182,255,92,.12)}
-.opt.wrong{border-color:var(--bad);background:rgba(255,138,138,.12)}
-.opt[disabled]{cursor:default}
-.explain{border-left:4px solid var(--cyan);padding:6px 14px;margin:12px 0;color:var(--text)}
-.qtop{display:flex;justify-content:space-between;color:var(--muted);font-weight:700;margin-bottom:8px}
+    /* quiz */
+    #quiz{background:var(--deep);border-block:1px solid var(--line)}
+    .opts{display:grid;gap:10px;margin:16px 0}
+    .opt{text-align:left;background:var(--night);color:var(--text);border:2px solid var(--line);border-radius:14px;padding:14px 16px;font-weight:700;min-height:52px}
+    .opt:hover:not([disabled]){border-color:var(--cyan)}
+    .opt.right{border-color:var(--lime);background:rgba(182,255,92,.12)}
+    .opt.wrong{border-color:var(--bad);background:rgba(255,138,138,.12)}
+    .opt[disabled]{cursor:default}
+    .explain{border-left:4px solid var(--cyan);padding:6px 14px;margin:12px 0;color:var(--text)}
+    .qtop{display:flex;justify-content:space-between;color:var(--muted);font-weight:700;margin-bottom:8px}
 
-/* team */
-.team{border:2px dashed var(--pollen);border-radius:var(--radius);padding:24px}
-footer{padding:40px 0 60px;color:var(--muted);font-size:.95rem;border-top:1px solid var(--line)}
-footer li{margin-bottom:.3em}
+    /* team */
+    .team{border:2px dashed var(--pollen);border-radius:var(--radius);padding:24px}
+    footer{padding:40px 0 60px;color:var(--muted);font-size:.95rem;border-top:1px solid var(--line)}
+    footer li{margin-bottom:.3em}
 
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
-</style>
+
+    /* Moth night-garden discovery: original SVG art, no external image links */
+    #moths{position:relative;overflow:hidden;background:radial-gradient(ellipse at 80% 10%,#34366e 0%,#171e49 36%,#0b1026 80%);border-block:1px solid var(--line)}
+    #moths::before{content:"✦  ·  ✧     ✦     ·        ✧      ✦";position:absolute;top:22px;left:4%;right:4%;letter-spacing:2rem;color:#ffe5a7;opacity:.5;pointer-events:none}
+    .moth-kicker{display:inline-block;color:var(--cyan);font-size:.86rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;margin-bottom:9px}
+    .moth-lead{font-size:1.12rem;color:#d5dcff}
+    .moth-scene{position:relative;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);gap:18px;align-items:center;margin:25px 0 32px;padding:25px;border:2px solid #5d5898;border-radius:26px;background:linear-gradient(135deg,#222b5d,#101835);box-shadow:0 10px 40px #0005}
+    .moth-art svg{display:block;width:100%;height:auto;max-height:350px;filter:drop-shadow(0 0 16px #f2d6ff30)}
+    .moth-scene-copy{border-radius:18px;background:#101735a8;padding:20px}
+    .moth-scene-copy h3{font-size:clamp(1.5rem,4vw,2.3rem);color:var(--pollen)}
+    .moth-scene-copy p{margin:0;color:#e1e5ff}
+    .moth-fact-pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+    .moth-fact-pills span{border-radius:999px;background:#4b427a;color:white;padding:6px 11px;font-size:.85rem;font-weight:800}
+    .moth-subhead{color:var(--pollen);margin:0 0 14px}
+    .moth-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+    .moth-step{position:relative;background:#222852;border:2px solid #414b82;border-radius:20px;padding:14px 12px;transition:transform .2s,border-color .2s,box-shadow .2s;text-align:center}
+    .moth-step.active{border-color:var(--cyan);box-shadow:0 0 24px #4df0d033;transform:translateY(-4px)}
+    .moth-step svg{display:block;width:100%;max-width:160px;height:118px;margin:0 auto 12px}
+    .moth-step strong{display:block;color:#fff0ac;font-family:Fredoka,sans-serif;font-size:1.13rem;margin-bottom:5px}
+    .moth-step p{font-size:.9rem;line-height:1.45;color:#dbe2ff;margin:0}
+    .moth-step .num{position:absolute;top:8px;left:9px;border-radius:50%;width:26px;height:26px;background:var(--pollen);color:#15142c;font-size:.82rem;font-weight:800;display:grid;place-items:center}
+    .moth-controls{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;margin:18px 0 30px}
+    .moth-controls .btn{padding:9px 19px}
+    #mothStepStatus{color:var(--cyan);font-weight:800;text-align:center}
+    .moth-bottom{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+    .moth-info{border-radius:20px;padding:20px;background:#292650;border:2px solid #56528d}
+    .moth-info h3{color:var(--pink);margin:0 0 10px}
+    .moth-info p{color:#e0e6ff;margin:0}
+    .moth-big-icon{font-size:2rem;margin-bottom:5px}
+    .moth-action{background:#213d43;border-color:#378779}
+    .moth-action h3{color:var(--lime)}
+    @media(max-width:760px){.moth-scene{grid-template-columns:1fr;padding:16px}.moth-scene-copy{padding:15px}.moth-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.moth-bottom{grid-template-columns:1fr}}
+    @media(max-width:420px){.moth-steps{gap:8px}.moth-step{padding:12px 7px}.moth-step strong{font-size:1rem}.moth-step p{font-size:.84rem}}
+
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+  </style>
 </head>
 <body>
 
@@ -125,6 +159,7 @@ footer li{margin-bottom:.3em}
   <div class="wrap">
     <strong>BioGlow Garden</strong>
     <a href="#meet">Meet them</a>
+    <a href="#moths">🌙 Moth magic</a>
     <a href="#story">A bee's day</a>
     <a href="#problems">Problems</a>
     <a href="#help">How to help</a>
@@ -148,69 +183,96 @@ footer li{margin-bottom:.3em}
 </header>
 
 <main>
-<section id="meet">
-  <div class="wrap">
-    <h2>Meet the pollinators</h2>
-    <p>Pick one to see what makes it special.</p>
-    <div class="tabs" role="tablist" aria-label="Pollinators" id="ptabs"></div>
-    <div class="card" id="pcard" role="tabpanel" aria-live="polite"></div>
-  </div>
-</section>
-
-<section id="story">
-  <div class="wrap">
-    <h2>A day in the life of a honey bee</h2>
-    <p>Follow one bee on her trip. At the end, you make a choice.</p>
-    <div class="card">
-      <div class="dots" id="sdots" aria-hidden="true"></div>
-      <div class="stage" id="stage" aria-live="polite"></div>
-      <div class="row" id="sbtns"></div>
+  <section id="meet">
+    <div class="wrap">
+      <h2>Meet the pollinators</h2>
+      <p>Pick one to see what makes it special.</p>
+      <div class="tabs" role="tablist" aria-label="Pollinators" id="ptabs"></div>
+      <div class="card" id="pcard" role="tabpanel" aria-live="polite"></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="problems">
-  <div class="wrap">
-    <h2>What is hurting pollinators?</h2>
-    <p>Switch on a problem and watch the garden. The glow shows how many pollinators are left in our pretend garden.</p>
-    <div class="garden" id="garden" aria-hidden="true"></div>
-    <div class="qtop"><span>Garden glow</span><span id="glowpct">100%</span></div>
-    <div class="meter" role="progressbar" aria-label="Garden glow" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" id="meterbar"><i id="meter" style="width:100%"></i></div>
-    <div class="threats" id="threats"></div>
-    <div class="row"><button class="btn alt" id="resetThreats">Turn all problems off</button></div>
-  </div>
-</section>
-
-<section id="help">
-  <div class="wrap">
-    <h2>What kids can do</h2>
-    <p>Check off what you will try. Every one lights up a flower.</p>
-    <div class="blooms" id="blooms" aria-hidden="true"></div>
-    <div id="acts"></div>
-    <p id="actmsg" style="margin-top:18px;font-weight:800" aria-live="polite"></p>
-  </div>
-</section>
-
-<section id="quiz">
-  <div class="wrap">
-    <h2>Pollinator quiz</h2>
-    <p>Eight questions. Let's see how much you learned.</p>
-    <div class="card" id="qbox"></div>
-  </div>
-</section>
-
-<section id="about">
-  <div class="wrap">
-    <h2>About our project</h2>
-    <div class="team">
-      <h3>Team: EcoDragons</h3>
-      <p><strong>Our focus:</strong> Pollinators and seeds. Bees, butterflies, moths, bats and birds carry pollen so plants can make seeds, and many animals also spread those seeds to new places. Together they help gardens and wild places grow and thrive.</p>
-      <p><strong>The problem:</strong> Many people don't know how much we depend on pollinator animals, or that they are losing flowers, safe homes and clean air to live in.</p>
-      <p><strong>Our idea:</strong> This awareness website. It lets anyone meet the pollinators, see what threatens them, take a quiz, and pick simple actions that help a garden glow.</p>
-      <p class="small" style="margin-bottom:0">Made by the EcoDragons for FIRST LEGO League Innovation Project · BioGlow theme · Founders Edition.</p>
+  <section id="moths" aria-labelledby="mothHeading">
+    <div class="wrap">
+      <span class="moth-kicker">🌙 Meet the midnight garden crew</span>
+      <h2 id="mothHeading">Moths: <span class="glow-text">Nighttime Flower Heroes!</span></h2>
+      <p class="moth-lead">When the sun goes down, some pollinators are just getting started. Follow a moth on its nighttime mission!</p>
+      <div class="moth-scene">
+        <div class="moth-art"><svg viewBox="0 0 430 290" role="img" aria-label="Illustrated fuzzy moth flying toward a glowing pink flower under a crescent moon" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="mothGlow"><stop stop-color="#6152a3" stop-opacity=".7"/><stop offset="1" stop-color="#232a58" stop-opacity="0"/></radialGradient></defs><circle cx="170" cy="138" r="145" fill="url(#mothGlow)"/><circle cx="350" cy="54" r="35" fill="#ffedb3"/><circle cx="369" cy="43" r="32" fill="#232a58"/><g fill="#ffe9b7"><circle cx="48" cy="50" r="2"/><circle cx="114" cy="30" r="3"/><circle cx="280" cy="34" r="2"/><circle cx="388" cy="143" r="3"/><circle cx="30" cy="170" r="2"/></g><g transform="translate(295 231)"><path d="M0 0 Q-8 -42 0 -100" stroke="#6de0a0" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M-4 -28 Q-55 -52 -55 -26 Q-32 -7 -4 -28M4 -57 Q48 -83 48 -56 Q31 -35 4 -57" fill="#72c58e"/><g transform="translate(0 -113)"><g fill="#f79ddc"><ellipse rx="23" ry="35" cy="-25"/><ellipse rx="23" ry="35" cy="25"/><ellipse rx="35" ry="23" cx="-25"/><ellipse rx="35" ry="23" cx="25"/></g><circle r="21" fill="#ffd75c"/><g fill="#f4a843"><circle cx="-7" cy="-4" r="3"/><circle cx="8" cy="5" r="3"/><circle cx="4" cy="-9" r="3"/></g></g></g><g transform="translate(157 119) rotate(-13)"><path d="M-8 -7 C-49 -89 -134 -76 -108 -16 Q-127 32 -40 30 L-7 8" fill="#caafff" stroke="#f4e4ff" stroke-width="4"/><path d="M8 -7 C49 -89 134 -76 108 -16 Q127 32 40 30 L7 8" fill="#b6a0f1" stroke="#f4e4ff" stroke-width="4"/><path d="M-20 -9 Q-60 -35 -90 -25M20 -9 Q60 -35 90 -25" stroke="#7160bc" stroke-width="4" fill="none"/><ellipse rx="18" ry="43" fill="#e9cba5"/><circle cy="-27" r="16" fill="#f0d7b8"/><circle cx="-6" cy="-32" r="3" fill="#1d244a"/><circle cx="6" cy="-32" r="3" fill="#1d244a"/><path d="M-6 -40 Q-29 -71 -39 -55 M6 -40 Q29 -71 39 -55" stroke="#e9cba5" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M6 -24 Q40 -12 67 12 Q84 28 120 4" stroke="#ffe4a7" stroke-width="3" fill="none" stroke-dasharray="4 5"/></g><g fill="#ffe477"><circle cx="226" cy="176" r="4"/><circle cx="248" cy="158" r="3"/><circle cx="271" cy="150" r="4"/></g></svg></div>
+        <div class="moth-scene-copy">
+          <h3>Meet the night shift! ✨</h3>
+          <p>Many moths sip nectar from flowers after sunset. As they visit, they can carry pollen from flower to flower!</p>
+          <div class="moth-fact-pills"><span>🌙 Night explorers</span><span>🌸 Flower helpers</span><span>✨ Pollen carriers</span></div>
+        </div>
+      </div>
+      <h3 class="moth-subhead">4 pictures tell the pollination story</h3>
+      <div class="moth-steps" id="mothSteps"><div class="moth-step active" data-moth-step="0"><span class="num">1</span><svg viewBox="0 0 160 118" role="img" aria-label="Moth flying after dark" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="160" height="118" rx="16" fill="#171e43"/><g fill="#ffe8b6"><circle cx="24" cy="22" r="2"/><circle cx="142" cy="18" r="2"/><circle cx="119" cy="34" r="1.8"/></g><path d="M114 108V70" stroke="#6dd3a1" stroke-width="5"/><g transform="translate(114 64)"><g fill="#fb9fd6"><ellipse cy="-14" ry="17" rx="10"/><ellipse cy="14" ry="17" rx="10"/><ellipse cx="-14" ry="10" rx="17"/><ellipse cx="14" ry="10" rx="17"/></g><circle r="11" fill="#ffcf58"/></g><g transform="translate(55 56)"><path d="M0 0Q-25 -39 -47 -12Q-35 15 -6 11 M0 0Q25 -39 47 -12Q35 15 6 11" fill="#bba5f6" stroke="#e9d7ff" stroke-width="2"/><ellipse rx="7" ry="23" fill="#e8d1b9"/><circle cy="-15" r="7" fill="#e8d1b9"/></g><circle cx="133" cy="30" r="16" fill="#ffe8a7"/></svg><strong>Find a flower</strong><p>At night, a moth follows a flower’s sweet smell.</p></div>
+        <div class="moth-step" data-moth-step="1"><span class="num">2</span><svg viewBox="0 0 160 118" role="img" aria-label="Moth feeding on flower nectar" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="160" height="118" rx="16" fill="#171e43"/><g fill="#ffe8b6"><circle cx="24" cy="22" r="2"/><circle cx="142" cy="18" r="2"/><circle cx="119" cy="34" r="1.8"/></g><path d="M114 108V70" stroke="#6dd3a1" stroke-width="5"/><g transform="translate(114 64)"><g fill="#fb9fd6"><ellipse cy="-14" ry="17" rx="10"/><ellipse cy="14" ry="17" rx="10"/><ellipse cx="-14" ry="10" rx="17"/><ellipse cx="14" ry="10" rx="17"/></g><circle r="11" fill="#ffcf58"/></g><g transform="translate(55 56)"><path d="M0 0Q-25 -39 -47 -12Q-35 15 -6 11 M0 0Q25 -39 47 -12Q35 15 6 11" fill="#bba5f6" stroke="#e9d7ff" stroke-width="2"/><ellipse rx="7" ry="23" fill="#e8d1b9"/><circle cy="-15" r="7" fill="#e8d1b9"/></g><path d="M78 55Q90 39 99 49" stroke="#ffdf5b" stroke-width="3" stroke-dasharray="4 4" fill="none"/></svg><strong>Sip the nectar</strong><p>Its long, straw-like tongue reaches the nectar.</p></div>
+        <div class="moth-step" data-moth-step="2"><span class="num">3</span><svg viewBox="0 0 160 118" role="img" aria-label="Yellow pollen on moth wings and body" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="160" height="118" rx="16" fill="#171e43"/><g fill="#ffe8b6"><circle cx="24" cy="22" r="2"/><circle cx="142" cy="18" r="2"/><circle cx="119" cy="34" r="1.8"/></g><path d="M114 108V70" stroke="#6dd3a1" stroke-width="5"/><g transform="translate(114 64)"><g fill="#fb9fd6"><ellipse cy="-14" ry="17" rx="10"/><ellipse cy="14" ry="17" rx="10"/><ellipse cx="-14" ry="10" rx="17"/><ellipse cx="14" ry="10" rx="17"/></g><circle r="11" fill="#ffcf58"/></g><g transform="translate(55 56)"><path d="M0 0Q-25 -39 -47 -12Q-35 15 -6 11 M0 0Q25 -39 47 -12Q35 15 6 11" fill="#bba5f6" stroke="#e9d7ff" stroke-width="2"/><ellipse rx="7" ry="23" fill="#e8d1b9"/><circle cy="-15" r="7" fill="#e8d1b9"/></g><g fill="#ffd54a"><circle cx="86" cy="39" r="4"/><circle cx="98" cy="52" r="4"/><circle cx="78" cy="68" r="3"/></g></svg><strong>Pick up pollen</strong><p>Tiny pollen grains brush onto its body.</p></div>
+        <div class="moth-step" data-moth-step="3"><span class="num">4</span><svg viewBox="0 0 160 118" role="img" aria-label="Moth moving pollen to another flower" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="160" height="118" rx="16" fill="#171e43"/><g fill="#ffe8b6"><circle cx="24" cy="22" r="2"/><circle cx="142" cy="18" r="2"/><circle cx="119" cy="34" r="1.8"/></g><path d="M114 108V70" stroke="#6dd3a1" stroke-width="5"/><g transform="translate(114 64)"><g fill="#fb9fd6"><ellipse cy="-14" ry="17" rx="10"/><ellipse cy="14" ry="17" rx="10"/><ellipse cx="-14" ry="10" rx="17"/><ellipse cx="14" ry="10" rx="17"/></g><circle r="11" fill="#ffcf58"/></g><g transform="translate(-78 0)"><path d="M114 108V70" stroke="#6dd3a1" stroke-width="5"/><g transform="translate(114 64)"><g fill="#fb9fd6"><ellipse cy="-14" ry="17" rx="10"/><ellipse cy="14" ry="17" rx="10"/><ellipse cx="-14" ry="10" rx="17"/><ellipse cx="14" ry="10" rx="17"/></g><circle r="11" fill="#ffcf58"/></g></g><g transform="translate(55 56)"><path d="M0 0Q-25 -39 -47 -12Q-35 15 -6 11 M0 0Q25 -39 47 -12Q35 15 6 11" fill="#bba5f6" stroke="#e9d7ff" stroke-width="2"/><ellipse rx="7" ry="23" fill="#e8d1b9"/><circle cy="-15" r="7" fill="#e8d1b9"/></g><path d="M76 70Q89 73 98 68" stroke="#70f7d5" stroke-width="4" stroke-dasharray="4 4" fill="none"/><g fill="#ffd54a"><circle cx="94" cy="60" r="4"/><circle cx="104" cy="68" r="3"/></g></svg><strong>Visit another</strong><p>Pollen rubs onto another flower. Seeds may grow!</p></div></div>
+      <div class="moth-controls"><button class="btn alt" type="button" id="mothBack" disabled>← Back</button><span id="mothStepStatus" role="status" aria-live="polite">Picture 1 of 4</span><button class="btn" type="button" id="mothNext">Next picture →</button></div>
+      <div class="moth-bottom">
+        <div class="moth-info"><div class="moth-big-icon" aria-hidden="true">🦋 🌼</div><h3>Surprise! Not all moths are brown.</h3><p>Moths come in amazing shapes and colors! Some can hover by flowers like tiny hummingbirds.</p></div>
+        <div class="moth-info moth-action"><div class="moth-big-icon" aria-hidden="true">💡 🌙</div><h3>Be a moth superhero!</h3><p>Turn off outdoor lights when you don’t need them. Less nighttime light can help moths find flowers.</p></div>
+      </div>
+      <p class="small" style="margin-top:16px">Fun science note: not every moth pollinates, and some moths fly during the day, too!</p>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section id="story">
+    <div class="wrap">
+      <h2>A day in the life of a honey bee</h2>
+      <p>Follow one bee on her trip. At the end, you make a choice.</p>
+      <div class="card">
+        <div class="dots" id="sdots" aria-hidden="true"></div>
+        <div class="stage" id="stage" aria-live="polite"></div>
+        <div class="row" id="sbtns"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="problems">
+    <div class="wrap">
+      <h2>What is hurting pollinators?</h2>
+      <p>Switch on a problem and watch the garden. The glow shows how many pollinators are left in our pretend garden.</p>
+      <div class="garden" id="garden" aria-hidden="true"></div>
+      <div class="qtop"><span>Garden glow</span><span id="glowpct">100%</span></div>
+      <div class="meter" role="progressbar" aria-label="Garden glow" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" id="meterbar"><i id="meter" style="width:100%"></i></div>
+      <div class="threats" id="threats"></div>
+      <div class="row"><button class="btn alt" id="resetThreats">Turn all problems off</button></div>
+    </div>
+  </section>
+
+  <section id="help">
+    <div class="wrap">
+      <h2>What kids can do</h2>
+      <p>Check off what you will try. Every one lights up a flower.</p>
+      <div class="blooms" id="blooms" aria-hidden="true"></div>
+      <div id="acts"></div>
+      <p id="actmsg" style="margin-top:18px;font-weight:800" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section id="quiz">
+    <div class="wrap">
+      <h2>Pollinator quiz</h2>
+      <p>Eight questions. Let's see how much you learned.</p>
+      <div class="card" id="qbox"></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <h2>About our project</h2>
+      <div class="team">
+        <h3>Team: EcoDragons</h3>
+        <p><strong>Our focus:</strong> Pollinators and seeds. Bees, butterflies, moths, bats and birds carry pollen so plants can make seeds, and many animals also spread those seeds to new places. Together they help gardens and wild places grow and thrive.</p>
+        <p><strong>The problem:</strong> Many people don't know how much we depend on pollinator animals, or that they are losing flowers, safe homes and clean air to live in.</p>
+        <p><strong>Our idea:</strong> This awareness website. It lets anyone meet the pollinators, see what threatens them, take a quiz, and pick simple actions that help a garden glow.</p>
+        <p class="small" style="margin-bottom:0">Made by the EcoDragons for FIRST LEGO League Innovation Project · BioGlow theme · Founders Edition.</p>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -220,190 +282,201 @@ footer li{margin-bottom:.3em}
 </footer>
 
 <script>
-/* ---------- Glowing pollen hero ---------- */
-(function(){
-  const c=document.getElementById('pollen'),x=c.getContext('2d');
-  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let w,h,dots=[],mouse={x:-999,y:-999};
-  const cols=['#ffd54a','#4df0d0','#ff7ad9','#b6ff5c'];
-  function size(){w=c.width=c.offsetWidth;h=c.height=c.offsetHeight;
-    dots=Array.from({length:Math.min(80,Math.floor(w/10))},()=>mk());}
-  function mk(px,py){return{x:px??Math.random()*w,y:py??Math.random()*h,r:1.5+Math.random()*3.5,
-    vx:(Math.random()-.5)*.3,vy:-.1-Math.random()*.35,col:cols[Math.floor(Math.random()*4)],ph:Math.random()*6.28,life:1}}
-  function draw(t){
-    x.clearRect(0,0,w,h);
-    for(const d of dots){
-      if(!reduce){d.x+=d.vx+Math.sin(t/1200+d.ph)*.2;d.y+=d.vy;}
-      const dx=d.x-mouse.x,dy=d.y-mouse.y,near=Math.max(0,1-Math.hypot(dx,dy)/140);
-      if(d.y<-10){d.y=h+10;d.x=Math.random()*w}
-      const a=(.35+.35*Math.sin(t/700+d.ph)+near)*d.life;
-      x.globalAlpha=Math.min(1,Math.max(.1,a));
-      x.shadowBlur=12+near*30;x.shadowColor=d.col;x.fillStyle=d.col;
-      x.beginPath();x.arc(d.x,d.y,d.r+near*3,0,6.28);x.fill();
+  /* ---------- Glowing pollen hero ---------- */
+  (function(){
+    const c=document.getElementById('pollen'),x=c.getContext('2d');
+    const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let w,h,dots=[],mouse={x:-999,y:-999};
+    const cols=['#ffd54a','#4df0d0','#ff7ad9','#b6ff5c'];
+    function size(){w=c.width=c.offsetWidth;h=c.height=c.offsetHeight;
+      dots=Array.from({length:Math.min(80,Math.floor(w/10))},()=>mk());}
+    function mk(px,py){return{x:px??Math.random()*w,y:py??Math.random()*h,r:1.5+Math.random()*3.5,
+      vx:(Math.random()-.5)*.3,vy:-.1-Math.random()*.35,col:cols[Math.floor(Math.random()*4)],ph:Math.random()*6.28,life:1}}
+    function draw(t){
+      x.clearRect(0,0,w,h);
+      for(const d of dots){
+        if(!reduce){d.x+=d.vx+Math.sin(t/1200+d.ph)*.2;d.y+=d.vy;}
+        const dx=d.x-mouse.x,dy=d.y-mouse.y,near=Math.max(0,1-Math.hypot(dx,dy)/140);
+        if(d.y<-10){d.y=h+10;d.x=Math.random()*w}
+        const a=(.35+.35*Math.sin(t/700+d.ph)+near)*d.life;
+        x.globalAlpha=Math.min(1,Math.max(.1,a));
+        x.shadowBlur=12+near*30;x.shadowColor=d.col;x.fillStyle=d.col;
+        x.beginPath();x.arc(d.x,d.y,d.r+near*3,0,6.28);x.fill();
+      }
+      requestAnimationFrame(draw);
     }
-    requestAnimationFrame(draw);
+    function move(e){const r=c.getBoundingClientRect();const p=e.touches?e.touches[0]:e;mouse.x=p.clientX-r.left;mouse.y=p.clientY-r.top;}
+    window.addEventListener('mousemove',move);
+    window.addEventListener('touchmove',move,{passive:true});
+    window.addEventListener('touchstart',move,{passive:true});
+    window.addEventListener('resize',size);
+    size();requestAnimationFrame(draw);
+  })();
+
+  /* ---------- Pollinators ---------- */
+  const P=[
+    {n:'Bees',e:'🐝',c:'#ffd54a',t:'The busiest workers',f:[
+        'There are about 20,000 kinds of bees in the world.',
+        'Bees live on every continent except Antarctica.',
+        'Bees, wasps and ants are all cousins in the same big insect group.',
+        'Bees can see ultraviolet light. Many flowers have glowing patterns, invisible to us, that point to the nectar.']},
+    {n:'Butterflies',e:'🦋',c:'#ff7ad9',t:'Daytime sippers',f:[
+        'Butterflies taste with their feet and drink nectar through a long tube called a proboscis.',
+        'Monarch butterflies travel thousands of miles to spend the winter in warmer places.',
+        'Monarch caterpillars only eat milkweed, so milkweed plants matter a lot.']},
+    {n:'Moths',e:'🌙',c:'#b9a6ff',t:'The night shift',f:[
+        'Many flowers open at night and are pale and sweet-smelling so moths can find them in the dark.',
+        'Moths pollinate while most other pollinators are asleep.',
+        'Bright outdoor lights can confuse moths and keep them from feeding.']},
+    {n:'Bats',e:'🦇',c:'#4df0d0',t:'Flying pollinators',f:[
+        'Some bats drink nectar and carry pollen on their fur and faces.',
+        'Bats help plants like agave and some kinds of cactus and wild bananas.',
+        'They find their way in the dark, so dark skies help them too.']},
+    {n:'Hummingbirds',e:'🐦',c:'#b6ff5c',t:'Tiny and fast',f:[
+        'Hummingbirds can hover and even fly backward while they drink nectar.',
+        'They are drawn to red and orange tube-shaped flowers.',
+        'In the Americas, many wildflowers depend on them.']},
+    {n:'Beetles',e:'🪲',c:'#ff9d5c',t:'The ancient pollinators',f:[
+        'Beetles were among the first pollinators, long before bees.',
+        'They often visit big, bowl-shaped flowers like magnolias.',
+        'They are messy eaters, and that is how pollen gets spread.']}
+  ];
+  const tabs=document.getElementById('ptabs'),card=document.getElementById('pcard');
+  function showP(i){
+    const p=P[i];card.style.setProperty('--c',p.c);
+    [...tabs.children].forEach((b,j)=>{b.setAttribute('aria-selected',j===i);b.style.setProperty('--c',P[j].c)});
+    card.innerHTML=`<div class="big" aria-hidden="true">${p.e}</div><h3>${p.n}: ${p.t}</h3><ul class="facts">${p.f.map(f=>`<li>${f}</li>`).join('')}</ul>`;
   }
-  function move(e){const r=c.getBoundingClientRect();const p=e.touches?e.touches[0]:e;mouse.x=p.clientX-r.left;mouse.y=p.clientY-r.top;}
-  window.addEventListener('mousemove',move);
-  window.addEventListener('touchmove',move,{passive:true});
-  window.addEventListener('touchstart',move,{passive:true});
-  window.addEventListener('resize',size);
-  size();requestAnimationFrame(draw);
-})();
+  P.forEach((p,i)=>{const b=document.createElement('button');b.role='tab';b.textContent=p.e+' '+p.n;b.onclick=()=>showP(i);tabs.appendChild(b)});
+  showP(0);
 
-/* ---------- Pollinators ---------- */
-const P=[
- {n:'Bees',e:'🐝',c:'#ffd54a',t:'The busiest workers',f:[
-  'There are about 20,000 kinds of bees in the world.',
-  'Bees live on every continent except Antarctica.',
-  'Bees, wasps and ants are all cousins in the same big insect group.',
-  'Bees can see ultraviolet light. Many flowers have glowing patterns, invisible to us, that point to the nectar.']},
- {n:'Butterflies',e:'🦋',c:'#ff7ad9',t:'Daytime sippers',f:[
-  'Butterflies taste with their feet and drink nectar through a long tube called a proboscis.',
-  'Monarch butterflies travel thousands of miles to spend the winter in warmer places.',
-  'Monarch caterpillars only eat milkweed, so milkweed plants matter a lot.']},
- {n:'Moths',e:'🌙',c:'#b9a6ff',t:'The night shift',f:[
-  'Many flowers open at night and are pale and sweet-smelling so moths can find them in the dark.',
-  'Moths pollinate while most other pollinators are asleep.',
-  'Bright outdoor lights can confuse moths and keep them from feeding.']},
- {n:'Bats',e:'🦇',c:'#4df0d0',t:'Flying pollinators',f:[
-  'Some bats drink nectar and carry pollen on their fur and faces.',
-  'Bats help plants like agave and some kinds of cactus and wild bananas.',
-  'They find their way in the dark, so dark skies help them too.']},
- {n:'Hummingbirds',e:'🐦',c:'#b6ff5c',t:'Tiny and fast',f:[
-  'Hummingbirds can hover and even fly backward while they drink nectar.',
-  'They are drawn to red and orange tube-shaped flowers.',
-  'In the Americas, many wildflowers depend on them.']},
- {n:'Beetles',e:'🪲',c:'#ff9d5c',t:'The ancient pollinators',f:[
-  'Beetles were among the first pollinators, long before bees.',
-  'They often visit big, bowl-shaped flowers like magnolias.',
-  'They are messy eaters, and that is how pollen gets spread.']}
-];
-const tabs=document.getElementById('ptabs'),card=document.getElementById('pcard');
-function showP(i){
-  const p=P[i];card.style.setProperty('--c',p.c);
-  [...tabs.children].forEach((b,j)=>{b.setAttribute('aria-selected',j===i);b.style.setProperty('--c',P[j].c)});
-  card.innerHTML=`<div class="big" aria-hidden="true">${p.e}</div><h3>${p.n}: ${p.t}</h3><ul class="facts">${p.f.map(f=>`<li>${f}</li>`).join('')}</ul>`;
-}
-P.forEach((p,i)=>{const b=document.createElement('button');b.role='tab';b.textContent=p.e+' '+p.n;b.onclick=()=>showP(i);tabs.appendChild(b)});
-showP(0);
+  /* ---------- Moth picture adventure ---------- */
+  (function(){
+    const cards=[...document.querySelectorAll('[data-moth-step]')];
+    const back=document.getElementById('mothBack'),next=document.getElementById('mothNext'),status=document.getElementById('mothStepStatus');
+    let index=0;
+    function show(){cards.forEach((c,i)=>c.classList.toggle('active',i===index));back.disabled=index===0;next.textContent=index===cards.length-1?'Start again ↻':'Next picture →';status.textContent=`Picture ${index+1} of ${cards.length}`;}
+    back.addEventListener('click',()=>{index=Math.max(0,index-1);show()});
+    next.addEventListener('click',()=>{index=(index+1)%cards.length;show()});
+    show();
+  })();
 
-/* ---------- Bee story ---------- */
-const S=[
- {e:'🏠',t:'The hive wakes up. Our bee is a worker, and she has a job: find food for her family.'},
- {e:'🌤️',t:'She flies outside to look for pollen and nectar. Pollen is the bee\'s protein. Nectar is her energy.'},
- {e:'🌼',t:'She finds flowers. Pollen sticks to her fuzzy body. When she visits the next flower, some rubs off. That is pollination, and it helps the plant make seeds and fruit.'},
- {e:'🧑',t:'She sees a human. Humans are huge! What happens next depends on the human…',choice:true}
-];
-let si=0;const stage=document.getElementById('stage'),sb=document.getElementById('sbtns'),sd=document.getElementById('sdots');
-function renderS(end){
-  sd.innerHTML=S.map((_,i)=>`<span class="${i<=si?'on':''}"></span>`).join('');
-  sb.innerHTML='';
-  if(end){
-    stage.innerHTML=end.html;
-    sb.append(btn('Start over',()=>{si=0;renderS()},'btn alt'));return;
+  /* ---------- Bee story ---------- */
+  const S=[
+    {e:'🏠',t:'The hive wakes up. Our bee is a worker, and she has a job: find food for her family.'},
+    {e:'🌤️',t:'She flies outside to look for pollen and nectar. Pollen is the bee\'s protein. Nectar is her energy.'},
+    {e:'🌼',t:'She finds flowers. Pollen sticks to her fuzzy body. When she visits the next flower, some rubs off. That is pollination, and it helps the plant make seeds and fruit.'},
+    {e:'🧑',t:'She sees a human. Humans are huge! What happens next depends on the human…',choice:true}
+  ];
+  let si=0;const stage=document.getElementById('stage'),sb=document.getElementById('sbtns'),sd=document.getElementById('sdots');
+  function renderS(end){
+    sd.innerHTML=S.map((_,i)=>`<span class="${i<=si?'on':''}"></span>`).join('');
+    sb.innerHTML='';
+    if(end){
+      stage.innerHTML=end.html;
+      sb.append(btn('Start over',()=>{si=0;renderS()},'btn alt'));return;
+    }
+    const s=S[si];
+    stage.innerHTML=`<div class="emoji" aria-hidden="true">${s.e}</div><p>${s.t}</p>`;
+    if(s.choice){
+      sb.append(btn('Stay calm and walk away',()=>renderS({html:`<div class="emoji" aria-hidden="true">😊</div><p><strong>Great choice!</strong> Bees almost never sting unless they feel threatened. She flies on, visits more flowers, and brings food home.</p>`})));
+      sb.append(btn('Swat at her',()=>renderS({html:`<div class="emoji" aria-hidden="true">😬</div><p>The bee feels in danger and stings. A honey bee\'s stinger has tiny barbs that stay stuck in skin, and when she pulls away it tears out part of her body. A honey bee usually dies after stinging a person. Bees only sting to protect themselves or their hive, so staying calm keeps both of you safe.</p>`}),'btn alt'));
+    }else sb.append(btn('Next',()=>{si++;renderS()}));
   }
-  const s=S[si];
-  stage.innerHTML=`<div class="emoji" aria-hidden="true">${s.e}</div><p>${s.t}</p>`;
-  if(s.choice){
-    sb.append(btn('Stay calm and walk away',()=>renderS({html:`<div class="emoji" aria-hidden="true">😊</div><p><strong>Great choice!</strong> Bees almost never sting unless they feel threatened. She flies on, visits more flowers, and brings food home.</p>`})));
-    sb.append(btn('Swat at her',()=>renderS({html:`<div class="emoji" aria-hidden="true">😬</div><p>The bee feels in danger and stings. A honey bee\'s stinger has tiny barbs that stay stuck in skin, and when she pulls away it tears out part of her body. A honey bee usually dies after stinging a person. Bees only sting to protect themselves or their hive, so staying calm keeps both of you safe.</p>`}),'btn alt'));
-  }else sb.append(btn('Next',()=>{si++;renderS()}));
-}
-function btn(t,f,cls='btn'){const b=document.createElement('button');b.className=cls;b.textContent=t;b.onclick=f;return b}
-renderS();
+  function btn(t,f,cls='btn'){const b=document.createElement('button');b.className=cls;b.textContent=t;b.onclick=f;return b}
+  renderS();
 
-/* ---------- Threats ---------- */
-const T=[
- {n:'Losing habitat',d:'Fields and meadows become parking lots and lawns, so there are fewer flowers and nesting spots.',w:22},
- {n:'Pesticides',d:'Some bug-killing chemicals also poison bees and butterflies that visit sprayed plants.',w:22},
- {n:'Climate change',d:'Warmer, stranger weather can make flowers bloom before pollinators wake up.',w:18},
- {n:'Diseases and pests',d:'Tiny varroa mites attack honey bees and spread illnesses in the hive.',w:20},
- {n:'Light pollution',d:'Bright night lights confuse moths and other night pollinators and stop them from feeding.',w:12}
-];
-const garden=document.getElementById('garden'),N=28;
-const icons=['🐝','🦋','🐝','🌙','🐝','🦇','🐦','🐝'];
-const flies=[];
-for(let i=0;i<N;i++){
-  const s=document.createElement('span');s.className='fly';s.textContent=icons[i%icons.length];
-  s.style.left=(4+Math.random()*90)+'%';s.style.top=(6+Math.random()*78)+'%';
-  garden.appendChild(s);flies.push(s);
-}
-const order=flies.map((_,i)=>i).sort(()=>Math.random()-.5);
-const th=document.getElementById('threats');
-T.forEach((t,i)=>{
-  const d=document.createElement('div');d.className='threat';
-  d.innerHTML=`<input type="checkbox" id="t${i}"><label for="t${i}">${t.n}</label><p>${t.d}</p>`;
-  d.querySelector('input').onchange=()=>{d.classList.toggle('on',d.querySelector('input').checked);updG()};
-  th.appendChild(d);
-});
-function updG(){
-  const loss=T.reduce((a,t,i)=>a+(document.getElementById('t'+i).checked?t.w:0),0);
-  const left=Math.max(0,100-loss);
-  document.getElementById('meter').style.width=left+'%';
-  document.getElementById('glowpct').textContent=left+'%';
-  document.getElementById('meterbar').setAttribute('aria-valuenow',left);
-  const alive=Math.round(N*left/100);
-  order.forEach((idx,k)=>flies[idx].classList.toggle('gone',k>=alive));
-}
-document.getElementById('resetThreats').onclick=()=>{T.forEach((_,i)=>{const c=document.getElementById('t'+i);c.checked=false;c.parentElement.classList.remove('on')});updG()};
-
-/* ---------- Actions ---------- */
-const A=[
- 'Plant native flowers in a pot, yard or school garden. Different flowers bloom in different seasons.',
- 'Skip bug-killing sprays. Ask a grown-up to try other ways to protect plants.',
- 'Leave a small wild patch or some bare soil. Many bees nest in the ground.',
- 'Put out a shallow dish of water with pebbles so bees can land and drink.',
- 'Turn off outdoor lights at night when you can, for moths and bats.',
- 'Tell three people one fact you learned here.'
-];
-const bl=document.getElementById('blooms'),ac=document.getElementById('acts');
-bl.innerHTML=A.map(()=>'<span>🌸</span>').join('');
-A.forEach((a,i)=>{
-  const d=document.createElement('div');d.className='act';
-  d.innerHTML=`<input type="checkbox" id="a${i}"><label for="a${i}">${a}</label>`;
-  d.querySelector('input').onchange=updA;ac.appendChild(d);
-});
-function updA(){
-  let n=0;A.forEach((_,i)=>{const on=document.getElementById('a'+i).checked;if(on)n++;bl.children[i].classList.toggle('on',on)});
-  document.getElementById('actmsg').textContent=n===0?'':n===A.length?'Amazing! You are a Pollinator Protector. 🌟':`${n} of ${A.length} done. Keep it glowing!`;
-}
-
-/* ---------- Quiz ---------- */
-const Q=[
- {q:'About how many kinds of bees are there in the world?',o:['About 20','About 200','About 20,000','About 2 million'],a:2,x:'There are around 20,000 species of bees. Most of them are wild bees, not honey bees.'},
- {q:'On which continent are there NO bees?',o:['Africa','Antarctica','Australia','South America'],a:1,x:'Bees live on every continent except Antarctica.'},
- {q:'What is pollination?',o:['Bees making honey','Moving pollen from flower to flower so plants can make seeds','Flowers drinking water','Bees building a hive'],a:1,x:'When pollen moves between flowers, plants can make seeds and fruit.'},
- {q:'About how many of the world\'s leading types of food crops depend at least partly on animal pollinators?',o:['About 5%','About 25%','About 50%','About 75%'],a:3,x:'Around 75% of the leading types of food crops benefit from animal pollination, including many fruits, vegetables and nuts. That is why pollinators help put food on our plates.'},
- {q:'Which animal pollinates flowers at night?',o:['Moths','Honey bees','Butterflies','Hummingbirds'],a:0,x:'Moths (and some bats) work the night shift while the others sleep.'},
- {q:'What happens to a honey bee after she stings a person?',o:['She takes a nap','She grows a new stinger','She usually dies','She gets stronger'],a:2,x:'A honey bee\'s barbed stinger stays in skin and tears away, so she usually dies. Bees only sting to defend themselves.'},
- {q:'Which of these is a problem for pollinators?',o:['Planting native flowers','Pesticides and habitat loss','Leaving water out','Dark night skies'],a:1,x:'Pesticides and habitat loss are two of the biggest threats.'},
- {q:'Which is the best way a kid can help pollinators?',o:['Spray the garden with bug spray','Cut down all the flowers','Plant flowers and tell friends','Chase bees away'],a:2,x:'Flowers give food, and sharing what you know helps others care too.'}
-];
-const qb=document.getElementById('qbox');let qi=0,score=0;
-function showQ(){
-  if(qi>=Q.length){
-    const msg=score>=7?'Pollinator Expert! 🏆':score>=5?'Great job, Garden Guardian! 🌼':'Good start! Read the sections above and try again. 🐝';
-    qb.innerHTML=`<h3>You scored ${score} out of ${Q.length}</h3><p>${msg}</p>`;
-    qb.append(btn('Try again',()=>{qi=0;score=0;showQ()}));return;
+  /* ---------- Threats ---------- */
+  const T=[
+    {n:'Losing habitat',d:'Fields and meadows become parking lots and lawns, so there are fewer flowers and nesting spots.',w:22},
+    {n:'Pesticides',d:'Some bug-killing chemicals also poison bees and butterflies that visit sprayed plants.',w:22},
+    {n:'Climate change',d:'Warmer, stranger weather can make flowers bloom before pollinators wake up.',w:18},
+    {n:'Diseases and pests',d:'Tiny varroa mites attack honey bees and spread illnesses in the hive.',w:20},
+    {n:'Light pollution',d:'Bright night lights confuse moths and other night pollinators and stop them from feeding.',w:12}
+  ];
+  const garden=document.getElementById('garden'),N=28;
+  const icons=['🐝','🦋','🐝','🌙','🐝','🦇','🐦','🐝'];
+  const flies=[];
+  for(let i=0;i<N;i++){
+    const s=document.createElement('span');s.className='fly';s.textContent=icons[i%icons.length];
+    s.style.left=(4+Math.random()*90)+'%';s.style.top=(6+Math.random()*78)+'%';
+    garden.appendChild(s);flies.push(s);
   }
-  const q=Q[qi];
-  qb.innerHTML=`<div class="qtop"><span>Question ${qi+1} of ${Q.length}</span><span>Score: ${score}</span></div><h3>${q.q}</h3><div class="opts"></div><div id="fb"></div>`;
-  const o=qb.querySelector('.opts');
-  q.o.forEach((t,i)=>{
-    const b=document.createElement('button');b.className='opt';b.textContent=t;
-    b.onclick=()=>{
-      [...o.children].forEach((c,j)=>{c.disabled=true;if(j===q.a)c.classList.add('right')});
-      if(i===q.a)score++;else b.classList.add('wrong');
-      const fb=document.getElementById('fb');
-      fb.innerHTML=`<div class="explain" aria-live="polite"><strong>${i===q.a?'Correct!':'Not quite.'}</strong> ${q.x}</div>`;
-      fb.append(btn(qi===Q.length-1?'See my score':'Next question',()=>{qi++;showQ()}));
-      fb.querySelector('button').focus();
-    };
-    o.appendChild(b);
+  const order=flies.map((_,i)=>i).sort(()=>Math.random()-.5);
+  const th=document.getElementById('threats');
+  T.forEach((t,i)=>{
+    const d=document.createElement('div');d.className='threat';
+    d.innerHTML=`<input type="checkbox" id="t${i}"><label for="t${i}">${t.n}</label><p>${t.d}</p>`;
+    d.querySelector('input').onchange=()=>{d.classList.toggle('on',d.querySelector('input').checked);updG()};
+    th.appendChild(d);
   });
-}
-showQ();
+  function updG(){
+    const loss=T.reduce((a,t,i)=>a+(document.getElementById('t'+i).checked?t.w:0),0);
+    const left=Math.max(0,100-loss);
+    document.getElementById('meter').style.width=left+'%';
+    document.getElementById('glowpct').textContent=left+'%';
+    document.getElementById('meterbar').setAttribute('aria-valuenow',left);
+    const alive=Math.round(N*left/100);
+    order.forEach((idx,k)=>flies[idx].classList.toggle('gone',k>=alive));
+  }
+  document.getElementById('resetThreats').onclick=()=>{T.forEach((_,i)=>{const c=document.getElementById('t'+i);c.checked=false;c.parentElement.classList.remove('on')});updG()};
+
+  /* ---------- Actions ---------- */
+  const A=[
+    'Plant native flowers in a pot, yard or school garden. Different flowers bloom in different seasons.',
+    'Skip bug-killing sprays. Ask a grown-up to try other ways to protect plants.',
+    'Leave a small wild patch or some bare soil. Many bees nest in the ground.',
+    'Put out a shallow dish of water with pebbles so bees can land and drink.',
+    'Turn off outdoor lights at night when you can, for moths and bats.',
+    'Tell three people one fact you learned here.'
+  ];
+  const bl=document.getElementById('blooms'),ac=document.getElementById('acts');
+  bl.innerHTML=A.map(()=>'<span>🌸</span>').join('');
+  A.forEach((a,i)=>{
+    const d=document.createElement('div');d.className='act';
+    d.innerHTML=`<input type="checkbox" id="a${i}"><label for="a${i}">${a}</label>`;
+    d.querySelector('input').onchange=updA;ac.appendChild(d);
+  });
+  function updA(){
+    let n=0;A.forEach((_,i)=>{const on=document.getElementById('a'+i).checked;if(on)n++;bl.children[i].classList.toggle('on',on)});
+    document.getElementById('actmsg').textContent=n===0?'':n===A.length?'Amazing! You are a Pollinator Protector. 🌟':`${n} of ${A.length} done. Keep it glowing!`;
+  }
+
+  /* ---------- Quiz ---------- */
+  const Q=[
+    {q:'About how many kinds of bees are there in the world?',o:['About 20','About 200','About 20,000','About 2 million'],a:2,x:'There are around 20,000 species of bees. Most of them are wild bees, not honey bees.'},
+    {q:'On which continent are there NO bees?',o:['Africa','Antarctica','Australia','South America'],a:1,x:'Bees live on every continent except Antarctica.'},
+    {q:'What is pollination?',o:['Bees making honey','Moving pollen from flower to flower so plants can make seeds','Flowers drinking water','Bees building a hive'],a:1,x:'When pollen moves between flowers, plants can make seeds and fruit.'},
+    {q:'About how many of the world\'s leading types of food crops depend at least partly on animal pollinators?',o:['About 5%','About 25%','About 50%','About 75%'],a:3,x:'Around 75% of the leading types of food crops benefit from animal pollination, including many fruits, vegetables and nuts. That is why pollinators help put food on our plates.'},
+    {q:'Which animal pollinates flowers at night?',o:['Moths','Honey bees','Butterflies','Hummingbirds'],a:0,x:'Many moths sip nectar at night. They can carry pollen between flowers while other pollinators rest.'},
+    {q:'What happens to a honey bee after she stings a person?',o:['She takes a nap','She grows a new stinger','She usually dies','She gets stronger'],a:2,x:'A honey bee\'s barbed stinger stays in skin and tears away, so she usually dies. Bees only sting to defend themselves.'},
+    {q:'Which of these is a problem for pollinators?',o:['Planting native flowers','Pesticides and habitat loss','Leaving water out','Dark night skies'],a:1,x:'Pesticides and habitat loss are two of the biggest threats.'},
+    {q:'Which is the best way a kid can help pollinators?',o:['Spray the garden with bug spray','Cut down all the flowers','Plant flowers and tell friends','Chase bees away'],a:2,x:'Flowers give food, and sharing what you know helps others care too.'}
+  ];
+  const qb=document.getElementById('qbox');let qi=0,score=0;
+  function showQ(){
+    if(qi>=Q.length){
+      const msg=score>=7?'Pollinator Expert! 🏆':score>=5?'Great job, Garden Guardian! 🌼':'Good start! Read the sections above and try again. 🐝';
+      qb.innerHTML=`<h3>You scored ${score} out of ${Q.length}</h3><p>${msg}</p>`;
+      qb.append(btn('Try again',()=>{qi=0;score=0;showQ()}));return;
+    }
+    const q=Q[qi];
+    qb.innerHTML=`<div class="qtop"><span>Question ${qi+1} of ${Q.length}</span><span>Score: ${score}</span></div><h3>${q.q}</h3><div class="opts"></div><div id="fb"></div>`;
+    const o=qb.querySelector('.opts');
+    q.o.forEach((t,i)=>{
+      const b=document.createElement('button');b.className='opt';b.textContent=t;
+      b.onclick=()=>{
+        [...o.children].forEach((c,j)=>{c.disabled=true;if(j===q.a)c.classList.add('right')});
+        if(i===q.a)score++;else b.classList.add('wrong');
+        const fb=document.getElementById('fb');
+        fb.innerHTML=`<div class="explain" aria-live="polite"><strong>${i===q.a?'Correct!':'Not quite.'}</strong> ${q.x}</div>`;
+        fb.append(btn(qi===Q.length-1?'See my score':'Next question',()=>{qi++;showQ()}));
+        fb.querySelector('button').focus();
+      };
+      o.appendChild(b);
+    });
+  }
+  showQ();
 </script>
 <!-- GoatCounter: free, privacy-friendly analytics. Dashboard: https://ecodragons-bioglow.goatcounter.com -->
 <script data-goatcounter="https://ecodragons-bioglow.goatcounter.com/count"
