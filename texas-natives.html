@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BioGlow Garden: Texas Native Plants for Pollinators</title>
+<meta name="description" content="Meet five Texas native plants that feed bees, butterflies, moths, hummingbirds and songbirds. Read our field notes, learn to read a plant tag, plan a garden and take the quiz. An FLL Innovation Project by the EcoDragons.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#0b1026;
+  --deep:#141a3a;
+  --panel:#1b2350;
+  --line:#2f3a7a;
+  --text:#eaf0ff;
+  --muted:#aab4e0;
+  --pollen:#ffd54a;
+  --cyan:#4df0d0;
+  --pink:#ff7ad9;
+  --lime:#b6ff5c;
+  --bad:#ff8a8a;
+  --radius:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;color-scheme:dark}
+body{margin:0;background:var(--night);color:var(--text);font-family:'Nunito',system-ui,sans-serif;font-size:18px;line-height:1.6}
+h1,h2,h3{font-family:'Fredoka','Nunito',sans-serif;line-height:1.15;margin:0 0 .5em}
+h1{font-size:clamp(2.4rem,8vw,4.6rem);font-weight:700}
+h2{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:700}
+h3{font-size:1.3rem;font-weight:500}
+p{margin:0 0 1em;max-width:62ch}
+a{color:var(--cyan)}
+:focus-visible{outline:3px solid var(--pollen);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+.glow-text{color:var(--pollen);text-shadow:0 0 18px rgba(255,213,74,.55)}
+button{font:inherit;cursor:pointer}
+.btn{background:var(--pollen);color:#1a1500;border:0;border-radius:999px;padding:12px 24px;font-weight:800;box-shadow:0 0 22px rgba(255,213,74,.4);min-height:48px}
+.btn:hover{filter:brightness(1.08)}
+.btn.alt{background:transparent;color:var(--text);border:2px solid var(--line);box-shadow:none}
+.btn.alt:hover{border-color:var(--cyan)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:rgba(11,16,38,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:6px;align-items:center;overflow-x:auto;padding-top:8px;padding-bottom:8px;white-space:nowrap}
+nav strong{font-family:'Fredoka',sans-serif;color:var(--pollen);margin-right:10px;font-size:1.1rem}
+nav a{color:var(--text);text-decoration:none;padding:8px 12px;border-radius:999px;font-weight:700;font-size:.95rem}
+nav a:hover{background:var(--panel)}
+nav a.home{border:2px solid var(--line)}
+
+/* hero */
+#hero{position:relative;min-height:72vh;display:flex;align-items:center;overflow:hidden;padding:60px 0}
+#pollen{position:absolute;inset:0;width:100%;height:100%;display:block}
+#hero .wrap{position:relative;z-index:2;pointer-events:none}
+#hero .wrap *{pointer-events:auto}
+.tag{display:inline-block;border:2px solid var(--cyan);color:var(--cyan);border-radius:999px;padding:4px 14px;font-weight:800;font-size:.9rem;margin-bottom:18px}
+.tag .eco{color:var(--lime);text-shadow:0 0 10px rgba(182,255,92,.6)}
+.hint{color:var(--muted);font-size:.95rem;margin-top:14px}
+.row{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+
+/* field notes */
+.notes h3{color:var(--lime);margin-top:1.6em}
+.notes .lead{font-size:1.15rem}
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:20px 0 8px}
+.why .card p{margin:0;color:var(--muted);font-size:1rem}
+.why .big{font-size:2.4rem;line-height:1;margin-bottom:8px}
+
+/* plant cards */
+#plants,#plan{background:var(--deep);border-block:1px solid var(--line)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.tabs button{background:var(--deep);color:var(--text);border:2px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:700;min-height:44px}
+.tabs button[aria-selected="true"]{background:var(--panel);border-color:var(--c,var(--pollen));box-shadow:0 0 16px var(--c,var(--pollen))}
+.card{background:var(--deep);border:2px solid var(--line);border-radius:var(--radius);padding:24px}
+#pcard{border-color:var(--c,var(--pollen));box-shadow:0 0 28px -8px var(--c,var(--pollen))}
+#pcard .big{font-size:3.4rem;line-height:1}
+.sci{color:var(--muted);margin-top:-.4em}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.badges span{border:1px solid var(--line);background:var(--night);border-radius:999px;padding:4px 12px;font-size:.9rem;font-weight:700}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:16px}
+.meta div{background:var(--night);border-radius:12px;padding:10px 14px}
+.meta b{display:block;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em}
+.facts{padding-left:20px;margin:0}
+.facts li{margin-bottom:.4em}
+
+/* plant tag */
+.tagwrap{display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:24px;align-items:start}
+@media (max-width:720px){.tagwrap{grid-template-columns:1fr}#tagx{position:sticky;bottom:12px;min-height:0;box-shadow:0 -8px 28px rgba(0,0,0,.5)}}
+.ptag{background:#fbfaf2;color:#1d2a1a;border-radius:24px 24px 14px 14px;padding:14px;box-shadow:0 0 30px -6px var(--lime);display:grid;gap:8px}
+.ptag button{position:relative;background:transparent;color:inherit;border:2px dashed transparent;border-radius:10px;padding:6px 10px;text-align:left;font-weight:800;min-height:44px}
+.ptag button:hover{border-color:#8bbf3a}
+.ptag button[aria-pressed="true"]{border-style:solid;border-color:#d48a00}
+.ptag button.seen::after{content:'✓';position:absolute;top:-8px;right:-8px;width:20px;height:20px;border-radius:50%;background:#2f8f3e;color:#fff;font-size:.75rem;display:grid;place-items:center;line-height:1}
+.ptag .pt-native{background:#c9e84a;color:#1f5a26;font-family:'Fredoka',sans-serif;font-size:1.7rem;text-align:center;letter-spacing:.06em}
+.ptag .pt-name{background:#2f8f3e;color:#fff;text-align:center;display:flex;flex-direction:column;align-items:center}
+.ptag .pt-name strong{font-family:'Fredoka',sans-serif;font-size:1.35rem;letter-spacing:.04em}
+.ptag .pt-name i{font-weight:400}
+.pt-icons{display:grid;grid-template-columns:1fr 1fr;gap:6px;border-block:1px dashed #c8c8b8;padding:8px 0}
+.ptag .pt-icons button{font-size:.88rem}
+.ptag .pt-type{font-family:'Fredoka',sans-serif;font-size:1.3rem;letter-spacing:.04em}
+.ptag .pt-line{font-weight:700;font-size:.95rem}
+@media (min-width:721px){#tagx{min-height:180px}}
+
+/* garden planner */
+.garden{position:relative;height:240px;border-radius:var(--radius);background:radial-gradient(circle at 50% 100%,#1f2f6a,#0e1330 70%);border:2px solid var(--line);overflow:hidden;margin-bottom:16px}
+.fly{position:absolute;font-size:1.5rem;transition:opacity .6s,filter .6s,transform .6s;filter:drop-shadow(0 0 8px var(--pollen))}
+.plant{bottom:8px;font-size:2.4rem;filter:drop-shadow(0 0 12px var(--c))}
+.fly.gone{opacity:.07;filter:grayscale(1);transform:scale(.6)}
+.qtop{display:flex;justify-content:space-between;color:var(--muted);font-weight:700;margin-bottom:8px}
+.months{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;list-style:none;padding:0;margin:0}
+.months li{background:var(--night);border:1px solid var(--line);border-radius:10px;min-height:66px;display:flex;flex-direction:column;align-items:center;padding:6px 0;gap:3px;font-weight:800;font-size:.85rem;color:var(--muted);transition:.4s}
+.months li.on{border-color:var(--pollen);color:var(--text);box-shadow:0 0 12px -2px var(--pollen)}
+.months i{width:8px;height:8px;border-radius:50%;background:var(--c);box-shadow:0 0 6px var(--c)}
+.visitors{display:flex;flex-wrap:wrap;gap:8px}
+.visitors>span{border:2px solid var(--line);border-radius:999px;padding:6px 14px;font-weight:700;color:var(--muted);opacity:.55;transition:.4s}
+.visitors>span.on{opacity:1;color:var(--text);border-color:var(--lime);box-shadow:0 0 14px -2px var(--lime)}
+.picks{display:grid;gap:12px;margin-top:24px}
+.pick{background:var(--night);border:2px solid var(--line);border-radius:var(--radius);padding:14px 18px;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start}
+.pick input{width:26px;height:26px;margin-top:4px;accent-color:var(--lime)}
+.pick label{font-family:'Fredoka',sans-serif;font-size:1.2rem;cursor:pointer}
+.pick p{grid-column:2;margin:0;color:var(--muted);font-size:1rem}
+.pick.on{border-color:var(--c)}
+.small{font-size:.9rem;color:var(--muted)}
+
+/* quiz */
+.opts{display:grid;gap:10px;margin:16px 0}
+.opt{text-align:left;background:var(--night);color:var(--text);border:2px solid var(--line);border-radius:14px;padding:14px 16px;font-weight:700;min-height:52px}
+.opt:hover:not([disabled]){border-color:var(--cyan)}
+.opt.right{border-color:var(--lime);background:rgba(182,255,92,.12)}
+.opt.wrong{border-color:var(--bad);background:rgba(255,138,138,.12)}
+.opt[disabled]{cursor:default}
+.explain{border-left:4px solid var(--cyan);padding:6px 14px;margin:12px 0;color:var(--text)}
+
+/* learn more */
+.team{border:2px dashed var(--pollen);border-radius:var(--radius);padding:24px}
+.team ul{margin:0 0 1em;padding-left:20px}
+footer{padding:40px 0 60px;color:var(--muted);font-size:.95rem;border-top:1px solid var(--line)}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <div class="wrap">
+    <strong>BioGlow Garden</strong>
+    <a class="home" href="index.html">← Home</a>
+    <a href="#notes">Field notes</a>
+    <a href="#plants">Meet the plants</a>
+    <a href="#tag">Read a tag</a>
+    <a href="#plan">Plan a garden</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#more">Learn more</a>
+  </div>
+</nav>
+
+<header id="hero">
+  <canvas id="pollen" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <span class="tag"><span class="eco">EcoDragons</span> · BioGlow Garden · Texas Natives</span>
+    <h1>Grow Texas natives.<br><span class="glow-text">Feed the pollinators.</span></h1>
+    <p>Native plants grew up right here in Texas, side by side with our bees, butterflies, moths and hummingbirds. We found five of them on a field trip, read every word on their plant tags, and turned what we learned into this page.</p>
+    <div class="row">
+      <a class="btn" href="#notes" style="text-decoration:none;display:inline-flex;align-items:center">Read our field notes</a>
+      <a class="btn alt" href="#plan" style="text-decoration:none;display:inline-flex;align-items:center">Plan a garden</a>
+    </div>
+    <p class="hint">Tap or move over the sky to make the pollen glow.</p>
+  </div>
+</header>
+
+<main>
+<section id="notes">
+  <div class="wrap notes">
+    <h2>Our field notes</h2>
+    <p class="lead">On a trip to a garden center, we found a whole section of plants labeled <strong>NATIVES</strong>. A big sign said to plant natives to support pollinators and conserve water. We wanted to know why, so we read every plant tag and looked up more facts.</p>
+
+    <h3>What is a native plant?</h3>
+    <p>A native plant grew wild in a place long before people started planting gardens there. Texas native plants have lived alongside Texas bees, butterflies, moths, bats and hummingbirds for thousands of years. Their flowers bloom at the right times and have the right shapes for the pollinators that live here.</p>
+
+    <h3>Four reasons to plant natives</h3>
+    <div class="why">
+      <div class="card"><div class="big" aria-hidden="true">🤝</div><h3>Old friends</h3><p>Native plants and native pollinators grew up together. The flowers are the right shape, color and size for the animals that live here.</p></div>
+      <div class="card"><div class="big" aria-hidden="true">💧</div><h3>Water savers</h3><p>Natives are used to hot Texas summers and dry spells. Once their roots are settled, many need very little extra water.</p></div>
+      <div class="card"><div class="big" aria-hidden="true">🍂</div><h3>Food all season</h3><p>Different natives bloom at different times. Some, like azure sage, bloom late in the year when lots of other flowers are done.</p></div>
+      <div class="card"><div class="big" aria-hidden="true">🐛</div><h3>Baby food</h3><p>Some natives are <strong>host plants</strong>. Butterflies lay eggs on them so their caterpillars have the right leaves to eat.</p></div>
+    </div>
+
+    <h3>What surprised us</h3>
+    <p>Not every helpful plant is about flowers. Switchgrass is pollinated by the wind, but skipper butterflies lay their eggs on it and songbirds eat its seeds. Timing matters too. Azure sage blooms late in the year, when many other plants have finished flowering and pollinators still need food.</p>
+    <p>We also learned that a plant tag is like a tiny instruction book. It tells you how much sun a plant wants, how much water it needs, how big it grows, and how cold it can get before it is in trouble.</p>
+
+    <h3>Our big idea</h3>
+    <p>If every family planted even one or two native plants, Texas pollinators would have many more places to stop for food. A few pots on a porch count too. Pick plants that bloom at different times, skip the bug spray, and your garden can glow from spring to fall.</p>
+  </div>
+</section>
+
+<section id="plants">
+  <div class="wrap">
+    <h2>Meet the plants</h2>
+    <p>Pick one to see who visits it and what makes it special.</p>
+    <div class="tabs" role="tablist" aria-label="Texas native plants" id="ptabs"></div>
+    <div class="card" id="pcard" role="tabpanel" aria-live="polite"></div>
+  </div>
+</section>
+
+<section id="tag">
+  <div class="wrap">
+    <h2>How to read a plant tag</h2>
+    <p>Every plant we saw had a tag full of clues. Here is a sample tag we made from the real ones. Tap any part to find out what it means.</p>
+    <div class="tagwrap">
+      <div class="ptag" id="ptag">
+        <button class="pt-native" data-k="native">NATIVE</button>
+        <button class="pt-name" data-k="name"><strong>AZURE SAGE</strong><i>Salvia azurea</i></button>
+        <div class="pt-icons">
+          <button data-k="sun">☀️ Full sun</button>
+          <button data-k="dry">🌡️ Drought tolerant</button>
+          <button data-k="deer">🦌 Deer resistant</button>
+          <button data-k="pol">🐝 Pollinator friendly</button>
+        </div>
+        <button class="pt-type" data-k="per">PERENNIAL</button>
+        <button class="pt-line" data-k="water">💧 Water deeply when soil begins to dry</button>
+        <button class="pt-line" data-k="size">↕️ 36–72″ H × 24–36″ W</button>
+        <button class="pt-line" data-k="cold">❄️ Cold hardiness</button>
+      </div>
+      <div class="card" id="tagx" aria-live="polite"><h3>👆 Tap a part of the tag</h3><p>There are 10 clues to find.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="wrap">
+    <h2>Plan a glowing garden</h2>
+    <p>Pick plants for your garden. Watch which months bloom and who comes to visit.</p>
+    <div class="garden" id="bed" aria-hidden="true"></div>
+    <div class="qtop"><span>Months in bloom</span><span id="mcount">0 of 12</span></div>
+    <ol class="months" id="months"></ol>
+    <div class="qtop" style="margin-top:20px"><span>Who your garden helps</span><span id="vcount">0 of 6</span></div>
+    <div class="visitors" id="visitors"></div>
+    <div class="picks" id="picks"></div>
+    <p id="planmsg" style="margin-top:18px;font-weight:800" aria-live="polite"></p>
+    <p class="small">Bloom months are approximate. They shift with the weather and with where you live in Texas.</p>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="wrap">
+    <h2>Texas natives quiz</h2>
+    <p>Six questions. Let's see how much you learned.</p>
+    <div class="card" id="qbox"></div>
+  </div>
+</section>
+
+<section id="more">
+  <div class="wrap">
+    <h2>Learn more</h2>
+    <div class="team">
+      <h3>Grow your own native garden</h3>
+      <p>The sign we saw listed groups that help people grow native plants, including Texas Master Gardeners, the Native Plant Society of Texas and the Texas Parks and Wildlife Foundation. Ask a grown-up to help you explore:</p>
+      <ul>
+        <li><a href="https://www.npsot.org/">Native Plant Society of Texas</a></li>
+        <li><a href="https://www.wildflower.org/plants/">Lady Bird Johnson Wildflower Center plant database</a></li>
+      </ul>
+      <p class="small" style="margin-bottom:0">Made by the EcoDragons for FIRST LEGO League Innovation Project · BioGlow theme · Founders Edition. <a href="index.html">Back to the BioGlow Garden home page.</a></p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="small">Made by kids for FIRST LEGO League Innovation Project · BioGlow theme · Founders Edition.</p>
+  </div>
+</footer>
+
+<script>
+/* ---------- Glowing pollen hero ---------- */
+(function(){
+  const c=document.getElementById('pollen'),x=c.getContext('2d');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let w,h,dots=[],mouse={x:-999,y:-999};
+  const cols=['#ffd54a','#7fb2ff','#c7a6ff','#ff6b4a','#b6ff5c'];
+  function size(){w=c.width=c.offsetWidth;h=c.height=c.offsetHeight;
+    dots=Array.from({length:Math.min(80,Math.floor(w/10))},()=>mk());}
+  function mk(px,py){return{x:px??Math.random()*w,y:py??Math.random()*h,r:1.5+Math.random()*3.5,
+    vx:(Math.random()-.5)*.3,vy:-.1-Math.random()*.35,col:cols[Math.floor(Math.random()*cols.length)],ph:Math.random()*6.28,life:1}}
+  function draw(t){
+    x.clearRect(0,0,w,h);
+    for(const d of dots){
+      if(!reduce){d.x+=d.vx+Math.sin(t/1200+d.ph)*.2;d.y+=d.vy;}
+      const dx=d.x-mouse.x,dy=d.y-mouse.y,near=Math.max(0,1-Math.hypot(dx,dy)/140);
+      if(d.y<-10){d.y=h+10;d.x=Math.random()*w}
+      const a=(.35+.35*Math.sin(t/700+d.ph)+near)*d.life;
+      x.globalAlpha=Math.min(1,Math.max(.1,a));
+      x.shadowBlur=12+near*30;x.shadowColor=d.col;x.fillStyle=d.col;
+      x.beginPath();x.arc(d.x,d.y,d.r+near*3,0,6.28);x.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  function move(e){const r=c.getBoundingClientRect();const p=e.touches?e.touches[0]:e;mouse.x=p.clientX-r.left;mouse.y=p.clientY-r.top;}
+  window.addEventListener('mousemove',move);
+  window.addEventListener('touchmove',move,{passive:true});
+  window.addEventListener('touchstart',move,{passive:true});
+  window.addEventListener('resize',size);
+  size();requestAnimationFrame(draw);
+})();
+
+/* ---------- Plants ---------- */
+const MS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const V={bee:['🐝','Bees'],fly:['🦋','Butterflies'],moth:['🌙','Moths'],hum:['🐦','Hummingbirds'],song:['🐤','Songbirds'],cat:['🐛','Caterpillars']};
+const B={sun:'☀️ Full sun',dry:'🌡️ Drought tolerant',deer:'🦌 Deer resistant',pol:'🐝 Pollinator friendly',cold:'❄️ Hardy to −5°F'};
+const P=[
+ {n:'Azure Sage',s:'Salvia azurea',e:'🪻',c:'#7fb2ff',t:'The late-season snack bar',b:['sun','dry','deer'],m:[7,10],v:['bee','fly','moth'],z:'3 to 6 feet tall',f:[
+  'Clear sky-blue flowers bloom in summer and fall. <i>Azurea</i> means sky blue.',
+  'It serves nectar late in the year, when many other plants have finished flowering.',
+  'Bees, butterflies and moths all flock to its flowers.',
+  'Once its roots are settled, it needs very little extra water.']},
+ {n:'Gregg\'s Mistflower',s:'Conoclinium dissectum',e:'🌸',c:'#c7a6ff',t:'The butterfly magnet',b:['sun','pol'],m:[4,11],v:['fly','bee'],z:'1 to 2 feet tall',f:[
+  'Its fluffy lavender flowers look like little puffs of mist.',
+  'It pulls in crowds of butterflies, especially Queens and their cousins, the Monarchs.',
+  'Monarchs refuel on it as they pass through Texas on their long fall trip to Mexico.',
+  'It stays low and spreads out to make a patch.']},
+ {n:'Flame Acanthus',s:'Anisacanthus quadrifidus var. wrightii',e:'🌺',c:'#ff6b4a',t:'The hummingbird bush',b:['sun','deer','dry'],m:[6,10],v:['hum','fly'],z:'3 to 4 feet tall',f:[
+  'Its red-orange flowers are shaped like tubes, perfect for a hummingbird\'s long beak.',
+  'Some people call it "hummingbird bush."',
+  'It blooms from summer until cool weather arrives, and butterflies visit too.',
+  'It is a tough shrub that handles heat, dry spells and hungry deer.']},
+ {n:'Zexmenia',s:'Wedelia acapulcensis var. hispida',e:'🌼',c:'#ffc93c',t:'Tough little sunshine',b:['sun','dry','pol'],m:[5,10],v:['bee','fly'],z:'1 to 3 feet tall',f:[
+  'Small yellow-orange flowers that look like mini daisies cover it from late spring to fall.',
+  'Bees and butterflies stop by for nectar and pollen.',
+  'Its leaves feel rough like sandpaper. <i>Hispida</i> means bristly.',
+  'It shrugs off heat and dry spells.']},
+ {n:'Switchgrass',s:'Panicum virgatum',e:'🌾',c:'#d9b56b',t:'The shelter plant',b:['sun','cold'],m:null,v:['cat','song','fly'],z:'3 to 5 feet tall',f:[
+  'A warm-season grass with airy flower clusters in summer and golden leaves in fall and winter.',
+  'It is a host plant: several kinds of skipper butterflies lay eggs on it, and their caterpillars eat the leaves.',
+  'Its seeds feed songbirds, and its clumps give butterflies and other wildlife a place to hide and nest.',
+  'Grass flowers are pollinated by the wind, not by animals. Switchgrass helps pollinators by giving them a home!']}
+];
+const season=p=>p.m?`${MS[p.m[0]-1]} to ${MS[p.m[1]-1]}`:'Shelter all year';
+const tabs=document.getElementById('ptabs'),card=document.getElementById('pcard');
+function showP(i){
+  const p=P[i];card.style.setProperty('--c',p.c);
+  [...tabs.children].forEach((b,j)=>{b.setAttribute('aria-selected',j===i);b.style.setProperty('--c',P[j].c)});
+  card.innerHTML=`<div class="big" aria-hidden="true">${p.e}</div><h3>${p.n}: ${p.t}</h3><p class="sci"><i>${p.s}</i></p>`+
+    `<div class="badges">${p.b.map(k=>`<span>${B[k]}</span>`).join('')}</div>`+
+    `<div class="meta"><div><b>Season</b>${season(p)}</div><div><b>Helps</b>${p.v.map(k=>V[k].join(' ')).join(', ')}</div><div><b>Size</b>${p.z}</div></div>`+
+    `<ul class="facts">${p.f.map(f=>`<li>${f}</li>`).join('')}</ul>`;
+}
+P.forEach((p,i)=>{const b=document.createElement('button');b.role='tab';b.textContent=p.e+' '+p.n;b.onclick=()=>showP(i);tabs.appendChild(b)});
+showP(0);
+
+/* ---------- Plant tag ---------- */
+const G={
+ native:['Native','This plant grew wild in Texas long before people planted gardens. Local pollinators already know it as food.'],
+ name:['Two names','The big name is the common name. The slanted one, <i>Salvia azurea</i>, is the scientific name. Scientists everywhere use the same scientific name, so there are no mix-ups. <i>Salvia</i> means sage and <i>azurea</i> means sky blue.'],
+ sun:['Full sun','The plant wants at least 6 hours of direct sunshine a day.'],
+ dry:['Drought tolerant','Once its roots are settled, the plant can handle dry spells with little extra watering. That saves water!'],
+ deer:['Deer resistant','Deer usually don\'t like to eat it. Usually, not never: a very hungry deer might still take a bite.'],
+ pol:['Pollinator friendly','Its flowers give nectar or pollen to bees, butterflies and other pollinators.'],
+ per:['Perennial','The plant comes back year after year. An annual lives for just one season.'],
+ water:['How to water','Water deeply when the soil starts to dry. Deep watering helps roots grow down far, which makes the plant tougher in hot weather.'],
+ size:['How big it gets','36–72″ H × 24–36″ W means 36 to 72 inches tall and 24 to 36 inches wide. 72 inches is 6 feet, taller than most grown-ups!'],
+ cold:['Cold hardiness','This tells you the coldest temperature the plant can survive. The switchgrass tag we read says it can handle −5°F!']
+};
+const tagx=document.getElementById('tagx'),tagb=[...document.querySelectorAll('#ptag button')],seen=new Set(),nG=Object.keys(G).length;
+tagb.forEach(b=>{
+  b.setAttribute('aria-pressed','false');
+  b.onclick=()=>{
+    const k=b.dataset.k,[h,t]=G[k];seen.add(k);b.classList.add('seen');
+    tagb.forEach(o=>o.setAttribute('aria-pressed',o===b));
+    tagx.innerHTML=`<h3>${h}</h3><p>${t}</p>`+(seen.size===nG?'<p><strong>You found every clue. You can read a plant tag like a pro! 🌟</strong></p>':`<p class="small">${seen.size} of ${nG} clues found</p>`);
+  };
+});
+
+/* ---------- Garden planner ---------- */
+const bed=document.getElementById('bed'),picks=document.getElementById('picks'),mo=document.getElementById('months'),vi=document.getElementById('visitors');
+const sprites=[];
+Object.keys(V).forEach(k=>{for(let i=0;i<3;i++){
+  const s=document.createElement('span');s.className='fly gone';s.textContent=V[k][0];
+  s.style.left=(4+Math.random()*88)+'%';s.style.top=(6+Math.random()*48)+'%';
+  bed.appendChild(s);sprites.push([k,s]);
+}});
+const sprouts=P.map((p,i)=>{const s=document.createElement('span');s.className='fly plant gone';s.textContent=p.e;s.style.left=(8+i*18)+'%';s.style.setProperty('--c',p.c);bed.appendChild(s);return s});
+mo.innerHTML=MS.map(m=>`<li><span aria-hidden="true">${m[0]}</span><span class="sr"></span></li>`).join('');
+vi.innerHTML=Object.values(V).map(([e,n])=>`<span>${e} ${n}<span class="sr"></span></span>`).join('');
+P.forEach((p,i)=>{
+  const d=document.createElement('div');d.className='pick';d.style.setProperty('--c',p.c);
+  d.innerHTML=`<input type="checkbox" id="g${i}"><label for="g${i}">${p.e} ${p.n}</label><p>${season(p)} · helps ${p.v.map(k=>V[k][1].toLowerCase()).join(', ')}</p>`;
+  d.querySelector('input').onchange=updPlan;picks.appendChild(d);
+});
+function updPlan(){
+  const on=P.map((_,i)=>document.getElementById('g'+i).checked),fed=new Set(),inBloom=MS.map(()=>[]);
+  P.forEach((p,i)=>{
+    picks.children[i].classList.toggle('on',on[i]);sprouts[i].classList.toggle('gone',!on[i]);
+    if(!on[i])return;
+    p.v.forEach(k=>fed.add(k));
+    if(p.m)for(let m=p.m[0];m<=p.m[1];m++)inBloom[m-1].push(p);
+  });
+  [...mo.children].forEach((li,m)=>{
+    const ps=inBloom[m];li.classList.toggle('on',ps.length>0);
+    li.querySelectorAll('i').forEach(d=>d.remove());
+    ps.forEach(p=>{const d=document.createElement('i');d.style.setProperty('--c',p.c);li.appendChild(d)});
+    li.querySelector('.sr').textContent=`${MS[m]}: ${ps.length?ps.map(p=>p.n).join(', '):'nothing in bloom'}`;
+  });
+  Object.keys(V).forEach((k,j)=>{const s=vi.children[j];s.classList.toggle('on',fed.has(k));s.querySelector('.sr').textContent=fed.has(k)?' (helped)':' (not yet)'});
+  sprites.forEach(([k,s])=>s.classList.toggle('gone',!fed.has(k)));
+  const lit=inBloom.map((ps,m)=>ps.length?m:-1).filter(m=>m>=0),n=on.filter(Boolean).length;
+  document.getElementById('mcount').textContent=`${lit.length} of 12`;
+  document.getElementById('vcount').textContent=`${fed.size} of ${Object.keys(V).length}`;
+  document.getElementById('planmsg').innerHTML=n===0?'Pick a plant to start your garden.':n===P.length?
+    `Amazing! Your garden blooms from ${MS[lit[0]]} to ${MS[lit[lit.length-1]]}, helps all six visitor groups, and gives wildlife shelter through the winter. 🌟<br><span class="small">Nothing on our list blooms from ${MS[(lit[lit.length-1]+1)%12]} to ${MS[(lit[0]+11)%12]}. Early-spring natives like agarita and Texas redbud can feed the first bees of the year.</span>`:
+    `${n} of ${P.length} plants picked. Keep planting!`;
+}
+updPlan();
+
+/* ---------- Quiz ---------- */
+function btn(t,f,cls='btn'){const b=document.createElement('button');b.className=cls;b.textContent=t;b.onclick=f;return b}
+const Q=[
+ {q:'What is a native plant?',o:['A plant that only grows indoors','A plant that grew wild in an area long before people planted gardens','Any plant sold at a store','A plant made of plastic'],a:1,x:'Native plants grew wild in a place for a very long time, so local pollinators know them well.'},
+ {q:'Which plant\'s red, tube-shaped flowers are a hummingbird favorite?',o:['Switchgrass','Zexmenia','Flame acanthus','Azure sage'],a:2,x:'Flame acanthus is sometimes called "hummingbird bush" because of its red tube flowers.'},
+ {q:'Gregg\'s mistflower is famous for attracting lots of what?',o:['Butterflies like Queens and Monarchs','Fish','Deer','Snails'],a:0,x:'Its fluffy flowers pull in crowds of butterflies, including Monarchs on their fall trip.'},
+ {q:'What does "drought tolerant" on a plant tag mean?',o:['It needs water every hour','It only grows in the shade','It can handle dry spells once its roots are settled','It grows under water'],a:2,x:'Drought tolerant plants need little extra water once settled, which helps save water.'},
+ {q:'Switchgrass is a host plant. What does that mean?',o:['It throws garden parties','Butterflies lay eggs on it and their caterpillars eat its leaves','It has the most nectar','It only grows in pots'],a:1,x:'Several kinds of skipper butterflies lay their eggs on switchgrass, and the caterpillars eat the leaves.'},
+ {q:'Why is azure sage\'s late bloom important?',o:['It blooms when many other flowers are finished, so pollinators still have food','It scares away bees','It only blooms at midnight','It never blooms'],a:0,x:'Late-season flowers keep bees, butterflies and moths fed after most other plants are done.'}
+];
+const qb=document.getElementById('qbox');let qi=0,score=0;
+function showQ(){
+  if(qi>=Q.length){
+    const msg=score===Q.length?'Native Plant Pro! 🏆':score>=4?'Great job, Garden Guardian! 🌼':'Good start! Read the sections above and try again. 🌱';
+    qb.innerHTML=`<h3>You scored ${score} out of ${Q.length}</h3><p>${msg}</p>`;
+    qb.append(btn('Try again',()=>{qi=0;score=0;showQ()}));return;
+  }
+  const q=Q[qi];
+  qb.innerHTML=`<div class="qtop"><span>Question ${qi+1} of ${Q.length}</span><span>Score: ${score}</span></div><h3>${q.q}</h3><div class="opts"></div><div id="fb"></div>`;
+  const o=qb.querySelector('.opts');
+  q.o.forEach((t,i)=>{
+    const b=document.createElement('button');b.className='opt';b.textContent=t;
+    b.onclick=()=>{
+      [...o.children].forEach((c,j)=>{c.disabled=true;if(j===q.a)c.classList.add('right')});
+      if(i===q.a)score++;else b.classList.add('wrong');
+      const fb=document.getElementById('fb');
+      fb.innerHTML=`<div class="explain" aria-live="polite"><strong>${i===q.a?'Correct!':'Not quite.'}</strong> ${q.x}</div>`;
+      fb.append(btn(qi===Q.length-1?'See my score':'Next question',()=>{qi++;showQ()}));
+      fb.querySelector('button').focus();
+    };
+    o.appendChild(b);
+  });
+}
+showQ();
+</script>
+<!-- GoatCounter: free, privacy-friendly analytics. Dashboard: https://ecodragons-bioglow.goatcounter.com -->
+<script data-goatcounter="https://ecodragons-bioglow.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
